@@ -89,7 +89,7 @@ html:not(.dark) .border:hover {
 }
 
 /* === Buttons (Light Mode) === */
-html:not(.dark) button {
+/* html:not(.dark) button {
   color: #ffffff !important;
   font-weight: 500;
   transition: all 0.2s ease;
@@ -99,7 +99,7 @@ html:not(.dark) button:hover {
 }
 
 /* Secondary button */
-html:not(.dark) .btn-secondary {
+/* html:not(.dark) .btn-secondary {
   background-color: #ffffff !important;
   border: 1px solid #d0d7de !important;
   color: #24292f !important;
@@ -108,7 +108,7 @@ html:not(.dark) .btn-secondary:hover {
   background-color: #f6f8fa !important;
   border-color: #0969da !important;
   color: #0969da !important;
-}
+} */
 
 /* Text */
 html:not(.dark) .text-gray-900 {
@@ -232,4 +232,9 @@ html.dark .swiper-pagination-bullet-active {
 }
 .custom-swiper .swiper-button-next {
   right: 10px;
+}
+
+/* mobile menu button */
+.mobile-menu {
+  color: white !important;
 }

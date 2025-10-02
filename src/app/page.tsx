@@ -1,110 +1,111 @@
 import Image from "next/image";
 import { fetchGitHubRepos } from "../utils/github";
 import ProjectSection from "@/components/ProjectSection";
+import ButtonContact from "@/components/ButtonContact";
 
 export default async function Home() {
   const repos = await fetchGitHubRepos();
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Hero Section */}
-      <div
+      <section
         id="home"
-        className="bg-gray-100 dark:bg-[#24292f] text-gray-900 dark:text-white py-8 transition-colors"
+        className="bg-gray-100 dark:bg-[#24292f] text-gray-900 dark:text-white"
       >
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row gap-8">
+        <div className="mx-auto max-w-5xl px-4">
+          <div className="min-h-[70vh] grid md:grid-cols-2 items-center gap-8">
             {/* Profile Image */}
-            <div className="flex-shrink-0">
-              <div className="w-64 h-64 rounded-full border-4 border-gray-200 overflow-hidden">
+            <div className="flex justify-center md:justify-start">
+              <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-gray-300 dark:border-gray-700">
                 <Image
-                  src="/vercel.svg" // Replace with your profile image
+                  src="/vercel.svg" // ganti dengan fotomu, ex: /avatar.jpg
                   alt="Profile"
                   width={256}
                   height={256}
                   className="w-full h-full object-cover"
+                  priority
                 />
               </div>
             </div>
 
             {/* Profile Info */}
-            <div className="flex-grow">
-              <h1 className="text-3xl font-bold mb-2">
+            <div className="text-center md:text-left">
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
                 Samson Abdullah{" "}
-                <span className="text-lg font-bold text-gray-400">
-                  - Y0osonC0de
+                <span className="block md:inline text-lg md:text-xl font-semibold text-gray-400">
+                  — Y0osonC0de
                 </span>
               </h1>
-              <h2 className="text-xl text-gray-300 mb-4">
+              <p className="mt-2 text-base md:text-lg text-gray-600 dark:text-gray-300">
                 Cyber Security Enthusiast
-              </h2>
-              <p className="text-gray-300 mb-6">
-                Exploring vulnerabilities, understanding risks, and building
-                solutions that strengthen digital security.
+              </p>
+              <p className="mt-3 text-gray-600 dark:text-gray-300">
+                Exploring vulnerabilities and building practical security
+                solutions.
               </p>
 
-              {/* CTA Buttons */}
-              <div className="flex gap-4 mb-6">
+              {/* CTA */}
+              <div className="mt-6 flex flex-wrap items-center gap-4 justify-center md:justify-start">
                 <a
-                  href="/cv.pdf" // ganti dengan file CV kamu
+                  href="/cv.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg bg-gray-100 dark:bg-blue-700 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600 transition"
+                  className="px-4 py-2 rounded-lg font-semibold bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-750 transition"
                 >
                   Download CV
                 </a>
-                <a
-                  href="#contact"
-                  className="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition"
-                >
-                  Contact Me
-                </a>
+                <ButtonContact />
               </div>
 
-              {/* Quick Stats */}
-              <div className="flex gap-6 text-sm text-gray-300">
+              <div className="mt-6 flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 text-sm text-gray-500 dark:text-gray-400">
+                {" "}
                 <div className="flex items-center gap-2">
+                  {" "}
                   <svg
                     className="w-5 h-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
+                    {" "}
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth="2"
                       d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                  <span>5+ Years Experience</span>
-                </div>
+                    />{" "}
+                  </svg>{" "}
+                  <span>5+ Years Experience</span>{" "}
+                </div>{" "}
                 <div className="flex items-center gap-2">
+                  {" "}
                   <svg
                     className="w-5 h-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
+                    {" "}
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth="2"
                       d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                    />
+                    />{" "}
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth="2"
                       d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
-                  <span>Pasar Minggu, Jakarta Selatan</span>
-                </div>
+                    />{" "}
+                  </svg>{" "}
+                  <span>Pasar Minggu, Jakarta Selatan</span>{" "}
+                </div>{" "}
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Main Content */}
       <main className="max-w-5xl mx-auto px-4 py-8">
