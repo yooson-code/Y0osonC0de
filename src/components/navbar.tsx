@@ -266,7 +266,7 @@ const Navbar = () => {
             {mounted && (
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="flex items-center space-x-2 text-gray-900 dark:text-white/80"
+                className="flex items-center space-x-2 text-gray-50 dark:text-white/80"
               >
                 {theme === "dark" ? (
                   // ☀️ Sun icon
