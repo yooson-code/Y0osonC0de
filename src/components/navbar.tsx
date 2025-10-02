@@ -8,9 +8,24 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeId, setActiveId] = useState<string>("home");
 
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme, systemTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+
+  useEffect(() => {
+    setMounted(true);
+    console.log("🔧 Navbar mounted, theme state:", {
+      theme,
+      resolvedTheme,
+      systemTheme,
+    });
+  }, []);
+
+  useEffect(() => {
+    if (mounted) {
+      console.log("🎯 Theme changed:", { theme, resolvedTheme, systemTheme });
+      console.log("📋 HTML classes:", document.documentElement.className);
+    }
+  }, [theme, resolvedTheme, mounted]);
 
   useEffect(() => {
     const ids = ["home", "about", "projects", "work"];
@@ -36,7 +51,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-[#24292f] px-4 py-3 sticky top-0 z-40">
+    <nav className="dark:bg-[#24292f] px-4 py-3 sticky top-0 z-40 transition-colors">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
@@ -55,32 +70,40 @@ const Navbar = () => {
           <a
             href="#home"
             className={`${
-              activeId === "home" ? "text-white" : "text-white/70"
-            } hover:text-white transition-colors`}
+              activeId === "home"
+                ? "text-gray-100 dark:text-white"
+                : "text-gray-50 dark:text-white/70"
+            } hover:text-gray-800 dark:hover:text-white transition-colors`}
           >
             Home
           </a>
           <a
             href="#about"
             className={`${
-              activeId === "about" ? "text-white" : "text-white/70"
-            } hover:text-white transition-colors`}
+              activeId === "about"
+                ? "text-gray-100 dark:text-white"
+                : "text-gray-50 dark:text-white/70"
+            } hover:text-gray-800 dark:hover:text-white transition-colors`}
           >
             About
           </a>
           <a
             href="#projects"
             className={`${
-              activeId === "projects" ? "text-white" : "text-white/70"
-            } hover:text-white transition-colors`}
+              activeId === "projects"
+                ? "text-gray-100 dark:text-white"
+                : "text-gray-50 dark:text-white/70"
+            } hover:text-gray-800 dark:hover:text-white transition-colors`}
           >
             Projects
           </a>
           <a
             href="#work"
             className={`${
-              activeId === "work" ? "text-white" : "text-white/70"
-            } hover:text-white transition-colors`}
+              activeId === "work"
+                ? "text-gray-100 dark:text-white"
+                : "text-gray-50 dark:text-white/70"
+            } hover:text-gray-800 dark:hover:text-white transition-colors`}
           >
             Work
           </a>
@@ -91,8 +114,46 @@ const Navbar = () => {
           {/* Theme toggle desktop */}
           {mounted && (
             <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="hidden md:inline text-white/70 hover:text-white transition-colors"
+              onClick={() => {
+                const newTheme = theme === "dark" ? "light" : "dark";
+                console.log(`🔄 Switching theme from ${theme} to ${newTheme}`);
+                setTheme(newTheme);
+
+                // Manual fallback - force add/remove dark class
+                setTimeout(() => {
+                  const html = document.documentElement;
+                  if (newTheme === "dark") {
+                    html.classList.add("dark");
+                    console.log("🔧 Manually added dark class");
+
+                    // Force background change on main container
+                    const mainContainer =
+                      document.querySelector(".min-h-screen");
+                    if (mainContainer) {
+                      (mainContainer as HTMLElement).style.backgroundColor =
+                        "#0d1117"; // GitHub dark background
+                      console.log(
+                        "🎨 Forced main container background to GitHub dark"
+                      );
+                    }
+                  } else {
+                    html.classList.remove("dark");
+                    console.log("🔧 Manually removed dark class");
+
+                    // Reset background to light
+                    const mainContainer =
+                      document.querySelector(".min-h-screen");
+                    if (mainContainer) {
+                      (mainContainer as HTMLElement).style.backgroundColor =
+                        "#f8f9fa"; // Soft light background
+                      console.log(
+                        "🎨 Reset main container background to soft light"
+                      );
+                    }
+                  }
+                }, 100);
+              }}
+              className="hidden md:inline text-gray-50 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? (
@@ -136,7 +197,7 @@ const Navbar = () => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6 text-white"
+              className="w-6 h-6 text-gray-900 dark:text-white"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -154,13 +215,15 @@ const Navbar = () => {
 
       {/* mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-[#24292f] border-t border-[#2f363b]">
+        <div className="md:hidden bg-white dark:bg-[#24292f] border-t border-gray-200 dark:border-[#2f363b]">
           <div className="px-4 py-3 space-y-2 flex flex-col">
             <a
               href="#home"
               onClick={() => setMenuOpen(false)}
               className={`${
-                activeId === "home" ? "text-white" : "text-white/80"
+                activeId === "home"
+                  ? "text-gray-900 dark:text-white"
+                  : "text-gray-600 dark:text-white/80"
               } block`}
             >
               Home
@@ -169,7 +232,9 @@ const Navbar = () => {
               href="#about"
               onClick={() => setMenuOpen(false)}
               className={`${
-                activeId === "about" ? "text-white" : "text-white/80"
+                activeId === "about"
+                  ? "text-gray-900 dark:text-white"
+                  : "text-gray-600 dark:text-white/80"
               } block`}
             >
               About
@@ -178,7 +243,9 @@ const Navbar = () => {
               href="#projects"
               onClick={() => setMenuOpen(false)}
               className={`${
-                activeId === "projects" ? "text-white" : "text-white/80"
+                activeId === "projects"
+                  ? "text-gray-900 dark:text-white"
+                  : "text-gray-600 dark:text-white/80"
               } block`}
             >
               Projects
@@ -187,7 +254,9 @@ const Navbar = () => {
               href="#work"
               onClick={() => setMenuOpen(false)}
               className={`${
-                activeId === "work" ? "text-white" : "text-white/80"
+                activeId === "work"
+                  ? "text-gray-900 dark:text-white"
+                  : "text-gray-600 dark:text-white/80"
               } block`}
             >
               Work
@@ -197,10 +266,48 @@ const Navbar = () => {
             {mounted && (
               <button
                 onClick={() => {
-                  setTheme(theme === "dark" ? "light" : "dark");
+                  const newTheme = theme === "dark" ? "light" : "dark";
+                  console.log(
+                    `📱 Mobile switching theme from ${theme} to ${newTheme}`
+                  );
+                  setTheme(newTheme);
                   setMenuOpen(false);
+
+                  // Manual fallback - force add/remove dark class
+                  setTimeout(() => {
+                    const html = document.documentElement;
+                    if (newTheme === "dark") {
+                      html.classList.add("dark");
+                      console.log("🔧 Mobile manually added dark class");
+
+                      // Force background change on main container
+                      const mainContainer =
+                        document.querySelector(".min-h-screen");
+                      if (mainContainer) {
+                        (mainContainer as HTMLElement).style.backgroundColor =
+                          "#0d1117"; // GitHub dark background
+                        console.log(
+                          "🎨 Mobile forced main container background to GitHub dark"
+                        );
+                      }
+                    } else {
+                      html.classList.remove("dark");
+                      console.log("🔧 Mobile manually removed dark class");
+
+                      // Reset background to light
+                      const mainContainer =
+                        document.querySelector(".min-h-screen");
+                      if (mainContainer) {
+                        (mainContainer as HTMLElement).style.backgroundColor =
+                          "#f8f9fa"; // Soft light background
+                        console.log(
+                          "🎨 Mobile reset main container background to soft light"
+                        );
+                      }
+                    }
+                  }, 100);
                 }}
-                className="text-white/80 text-left"
+                className="text-gray-900 dark:text-white/80 text-left"
               >
                 Toggle theme
               </button>

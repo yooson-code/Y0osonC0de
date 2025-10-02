@@ -1,56 +1,229 @@
 @import "tailwindcss";
 
-/* Hapus semua `@apply` di sini */
-/* Style tambahan boleh tetap ditulis manual */
+/* Smooth transition */
+html,
+body {
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* === DARK MODE (GitHub Dark) === */
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: #0d1117 !important;
+  color: #e6edf3 !important;
+}
+
+html.dark nav {
+  background-color: #161b22 !important;
+  border-bottom: 1px solid #21262d !important;
+  backdrop-filter: blur(8px);
+}
+html.dark nav a {
+  color: #e6edf3 !important;
+  transition: color 0.2s ease;
+}
+html.dark nav a:hover {
+  color: #ffffff !important;
+}
+
+html.dark .bg-white,
+html.dark .border {
+  background-color: #161b22 !important;
+  border-color: #30363d !important;
+  transition: all 0.25s ease;
+}
+html.dark .border:hover {
+  border-color: #58a6ff !important;
+  box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2) !important;
+  transform: translateY(-2px);
+}
+
+/* === LIGHT MODE (GitHub Light Flat) === */
+html:not(.dark) body {
+  background-color: #ffffff !important;
+  color: #24292f !important;
+}
+
+html:not(.dark) nav {
+  background-color: #0a3069 !important; /* biru solid tegas */
+  /* border-bottom: 1px solid #033d8a !important; */
+  /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important; */
+  color: #ffffff !important;
+}
+
+html:not(.dark) nav a {
+  color: #ffffff !important;
+  transition: color 0.2s ease;
+}
+html:not(.dark) nav a:hover {
+  color: #cbdfff !important; /* biru muda pas hover */
+}
+
+html:not(.dark) .bg-gray-50,
+html:not(.dark) .bg-gray-100,
+html:not(.dark) .min-h-screen {
+  background-color: #f6f8fa !important;
+}
+
+/* Cards */
+html:not(.dark) .bg-white,
+html:not(.dark) .border {
+  background-color: #ffffff !important;
+  border-color: #d0d7de !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
+  transition: all 0.25s ease;
+}
+html:not(.dark) .border:hover {
+  border-color: #0969da !important;
+  box-shadow: 0 4px 8px rgba(9, 105, 218, 0.15) !important;
+  transform: translateY(-2px);
+}
+
+/* === Buttons (Light Mode) === */
+html:not(.dark) button {
+  color: #ffffff !important;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+html:not(.dark) button:hover {
+  color: #0969da !important;
+}
+
+/* Secondary button */
+html:not(.dark) .btn-secondary {
+  background-color: #ffffff !important;
+  border: 1px solid #d0d7de !important;
+  color: #24292f !important;
+}
+html:not(.dark) .btn-secondary:hover {
+  background-color: #f6f8fa !important;
+  border-color: #0969da !important;
+  color: #0969da !important;
+}
+
+/* Text */
+html:not(.dark) .text-gray-900 {
+  color: #24292f !important;
+}
+html:not(.dark) .text-gray-600,
+html:not(.dark) .text-gray-700 {
+  color: #57606a !important;
+}
+html:not(.dark) .text-gray-400 {
+  color: #6e7781 !important;
+}
+
+/* Links */
+html:not(.dark) a {
+  color: #0969da !important;
+  transition: color 0.2s ease;
+}
+html:not(.dark) a:hover {
+  color: #0550ae !important;
+}
+
+/* Accents */
+html:not(.dark) .border-blue-500 {
+  border-color: #0969da !important;
+}
+html:not(.dark) .border-green-500 {
+  border-color: #1a7f37 !important;
+}
+html:not(.dark) .border-purple-500 {
+  border-color: #8250df !important;
+}
+
+/* === Hero Section (Light Mode Strong) === */
+html:not(.dark) #home,
+html:not(.dark) .hero-section {
+  background-color: #0a3069 !important; /* biru solid tegas ala GitHub */
+  color: #ffffff !important;
+}
+
+html:not(.dark) #home h1,
+html:not(.dark) #home h2,
+html:not(.dark) #home p {
+  color: #ffffff !important;
+}
+
+/* Buttons inside hero */
+html:not(.dark) #home button {
+  background-color: #0969da !important;
+  border: 1px solid #0550ae !important;
+  color: #ffffff !important;
+}
+html:not(.dark) #home button:hover {
+  background-color: #0550ae !important;
+  border-color: #033d8a !important;
+  color: white;
+}
+
+/* Secondary button in hero */
+html:not(.dark) #home .btn-secondary {
+  background-color: #ffffff !important;
+  border: 1px solid #d0d7de !important;
+  color: #0a3069 !important;
+}
+html:not(.dark) #home .btn-secondary:hover {
+  background-color: #f6f8fa !important;
+  border-color: #0969da !important;
+  color: #0969da !important;
+}
+
+/* === Swiper overrides === */
 .swiper {
   width: 100%;
   padding: 20px 0;
 }
-
 .swiper-slide {
   height: auto;
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: #1f2937; /* text-gray-900 */
+  color: #1f2937;
+  transition: color 0.2s ease;
 }
-
 html.dark .swiper-button-next,
 html.dark .swiper-button-prev {
-  color: #f3f4f6; /* text-gray-100 */
+  color: #f3f4f6;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #0969da;
+}
+html.dark .swiper-button-next:hover,
+html.dark .swiper-button-prev:hover {
+  color: #58a6ff;
 }
 
 .swiper-pagination-bullet {
-  background: #6b7280; /* gray-500 */
+  background: #6b7280;
 }
-
 html.dark .swiper-pagination-bullet {
-  background: #d1d5db; /* gray-300 */
+  background: #d1d5db;
 }
-
 .swiper-pagination-bullet-active {
-  background: #3b82f6; /* blue-500 */
+  background: #3b82f6;
 }
-
 html.dark .swiper-pagination-bullet-active {
-  background: #93c5fd; /* blue-300 */
+  background: #93c5fd;
 }
 
 .custom-swiper .swiper-pagination {
   bottom: 0px !important;
 }
-
 .custom-swiper .swiper-button-prev,
 .custom-swiper .swiper-button-next {
   width: 18px;
   height: 36px;
 }
-
 .custom-swiper .swiper-button-prev {
   left: 10px;
 }
-
 .custom-swiper .swiper-button-next {
   right: 10px;
 }

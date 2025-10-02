@@ -7,7 +7,10 @@ export default async function Home() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Hero Section */}
-      <div id="home" className="bg-[#24292f] text-white py-8">
+      <div
+        id="home"
+        className="bg-gray-100 dark:bg-[#24292f] text-gray-900 dark:text-white py-8 transition-colors"
+      >
         <div className="max-w-5xl mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-8">
             {/* Profile Image */}
@@ -45,7 +48,7 @@ export default async function Home() {
                   href="/cv.pdf" // ganti dengan file CV kamu
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition"
+                  className="px-4 py-2 rounded-lg bg-gray-100 dark:bg-blue-700 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600 transition"
                 >
                   Download CV
                 </a>
@@ -105,8 +108,9 @@ export default async function Home() {
 
       {/* Main Content */}
       <main className="max-w-5xl mx-auto px-4 py-8">
+        {/* Debug section removed - theme toggle working */}
         {/* Project Pinned Repositories Section */}
-        <div id="project">
+        <div id="projects">
           <ProjectSection repos={repos} />
         </div>
 

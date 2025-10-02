@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { ThemeProvider } from "next-themes";
-
+import { ThemeProviders } from "@/components/ThemeProviders"; // pakai komponen client
 import Navbar from "@/components/navbar";
 import "./globals.css";
 import "./fonts.css";
@@ -12,17 +11,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="bg-white text-gray-900 dark:bg-black dark:text-gray-100 font-sans antialiased">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+    <ThemeProviders>
+      <html lang="en" suppressHydrationWarning>
+        <body className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 font-sans antialiased transition-colors duration-200">
           <Navbar />
           {children}
-        </ThemeProvider>
-      </body>
-    </html>
+        </body>
+      </html>
+    </ThemeProviders>
   );
 }
