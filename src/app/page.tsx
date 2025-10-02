@@ -2,6 +2,7 @@ import Image from "next/image";
 import { fetchGitHubRepos } from "../utils/github";
 import ProjectSection from "@/components/ProjectSection";
 import ButtonContact from "@/components/ButtonContact";
+import { FaCode, FaServer, FaShieldAlt, FaTools } from "react-icons/fa";
 
 export default async function Home() {
   const repos = await fetchGitHubRepos();
@@ -233,7 +234,11 @@ export default async function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {/* Skill Category 1 */}
             <div className="border dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-800">
-              <h3 className="font-semibold mb-2 text-gray-900 dark:text-gray-100">
+              <h3 className="font-semibold mb-2 text-gray-900 dark:text-gray-100 flex items-center gap-2">
+                <FaCode
+                  className="text-blue-600 dark:text-blue-400"
+                  aria-hidden="true"
+                />
                 Frontend
               </h3>
               <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
@@ -246,7 +251,11 @@ export default async function Home() {
 
             {/* Skill Category 2 */}
             <div className="border dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-800">
-              <h3 className="font-semibold mb-2 text-gray-900 dark:text-gray-100">
+              <h3 className="font-semibold mb-2 text-gray-900 dark:text-gray-100 flex items-center gap-2">
+                <FaServer
+                  className="text-emerald-600 dark:text-emerald-400"
+                  aria-hidden="true"
+                />
                 Backend
               </h3>
               <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
@@ -259,11 +268,15 @@ export default async function Home() {
 
             {/* Skill Category 3 */}
             <div className="border dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-800">
-              <h3 className="font-semibold mb-2 text-gray-900 dark:text-gray-100">
+              <h3 className="font-semibold mb-2 text-gray-900 dark:text-gray-100 flex items-center gap-2">
+                <FaShieldAlt
+                  className="text-rose-600 dark:text-rose-400"
+                  aria-hidden="true"
+                />
                 Cyber Security
               </h3>
               <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
-                <li>Reccon</li>
+                <li>Recon</li> {/* perbaiki dari Reccon -> Recon */}
                 <li>Pentest</li>
                 <li>Forensic</li>
                 <li>Monitoring</li>
@@ -272,7 +285,11 @@ export default async function Home() {
 
             {/* Skill Category 4 */}
             <div className="border dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-800">
-              <h3 className="font-semibold mb-2 text-gray-900 dark:text-gray-100">
+              <h3 className="font-semibold mb-2 text-gray-900 dark:text-gray-100 flex items-center gap-2">
+                <FaTools
+                  className="text-amber-600 dark:text-amber-400"
+                  aria-hidden="true"
+                />
                 Tools
               </h3>
               <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
