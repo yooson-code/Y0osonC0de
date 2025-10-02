@@ -1,26 +1,56 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Hapus semua `@apply` di sini */
+/* Style tambahan boleh tetap ditulis manual */
+.swiper {
+  width: 100%;
+  padding: 20px 0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.swiper-slide {
+  height: auto;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.swiper-button-next,
+.swiper-button-prev {
+  color: #1f2937; /* text-gray-900 */
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+html.dark .swiper-button-next,
+html.dark .swiper-button-prev {
+  color: #f3f4f6; /* text-gray-100 */
+}
+
+.swiper-pagination-bullet {
+  background: #6b7280; /* gray-500 */
+}
+
+html.dark .swiper-pagination-bullet {
+  background: #d1d5db; /* gray-300 */
+}
+
+.swiper-pagination-bullet-active {
+  background: #3b82f6; /* blue-500 */
+}
+
+html.dark .swiper-pagination-bullet-active {
+  background: #93c5fd; /* blue-300 */
+}
+
+.custom-swiper .swiper-pagination {
+  bottom: 0px !important;
+}
+
+.custom-swiper .swiper-button-prev,
+.custom-swiper .swiper-button-next {
+  width: 18px;
+  height: 36px;
+}
+
+.custom-swiper .swiper-button-prev {
+  left: 10px;
+}
+
+.custom-swiper .swiper-button-next {
+  right: 10px;
 }

@@ -1,0 +1,1 @@
+This folder is for custom web fonts. Place font files (woff2, woff, ttf, etc) here.
