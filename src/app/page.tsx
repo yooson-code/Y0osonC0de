@@ -48,7 +48,7 @@ export default async function Home() {
               {/* CTA */}
               <div className="mt-6 flex flex-wrap items-center gap-4 justify-center md:justify-start">
                 <a
-                  href="/cv.pdf"
+                  href="/Samson_Abdullah_1025.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-2 rounded-lg font-semibold bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-750 transition"
