@@ -99,6 +99,10 @@ export default function ProjectSlider({ repos }: ProjectSliderProps) {
         ))}
       </Swiper>
 
+      {/* Slide indicator */}
+      <div className="absolute right-0 bottom-3 text-sm text-gray-600 dark:text-gray-300 bg-white/80 dark:bg-gray-800/80 px-3 py-1 rounded-full backdrop-blur-sm">
+        {activeIndex + 1} / {slides.length}
+      </div>
     </div>
   );
 }

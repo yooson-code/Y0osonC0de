@@ -30,15 +30,24 @@ export default function ContactMeButton() {
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.3 }}
           >
-            <a href="https://instagram.com/_yoo.son/" target="_blank">
+            <a
+              href="https://instagram.com/_yoo.son/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaInstagram className="text-2xl text-blue-600 dark:text-pink-500 hover:scale-110 transition" />
             </a>
-            <a href="https://github.com/yooson-code/" target="_blank">
+            <a
+              href="https://github.com/yooson-code/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaGithub className="text-2xl text-gray-800 dark:text-gray-200 hover:scale-110 transition" />
             </a>
             <a
               href="https://linkedin.com/in/samson-abdullah-8a062a249/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <FaLinkedin className="text-2xl text-blue-700 dark:text-blue-400 hover:scale-110 transition" />
             </a>

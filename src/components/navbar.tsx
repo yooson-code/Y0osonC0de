@@ -13,19 +13,7 @@ const Navbar = () => {
 
   useEffect(() => {
     setMounted(true);
-    console.log("🔧 Navbar mounted, theme state:", {
-      theme,
-      resolvedTheme,
-      systemTheme,
-    });
   }, []);
-
-  useEffect(() => {
-    if (mounted) {
-      console.log("🎯 Theme changed:", { theme, resolvedTheme, systemTheme });
-      console.log("📋 HTML classes:", document.documentElement.className);
-    }
-  }, [theme, resolvedTheme, mounted]);
 
   useEffect(() => {
     const ids = ["home", "about", "projects", "work"];
@@ -54,14 +42,11 @@ const Navbar = () => {
     <nav className="dark:bg-[#24292f] px-4 py-3 sticky top-0 z-40 transition-colors">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/vercel.svg"
-              alt="Logo"
-              width={32}
-              height={32}
-              className="invert"
-            />
+          <Link
+            href="/"
+            className="font-black text-gray-50 dark:text-white hover:text-gray-800 dark:hover:text-white transition-colors"
+          >
+            Yooson—code
           </Link>
         </div>
 
@@ -71,9 +56,9 @@ const Navbar = () => {
             href="#home"
             className={`${
               activeId === "home"
-                ? "text-gray-100 dark:text-white"
-                : "text-gray-50 dark:text-white/70"
-            } hover:text-gray-800 dark:hover:text-white transition-colors`}
+                ? "text-gray-50 dark:text-white"
+                : "text-gray-50 dark:text-white"
+            } hover:text-gray-900 dark:hover:text-white transition-colors`}
           >
             Home
           </a>
@@ -81,9 +66,9 @@ const Navbar = () => {
             href="#about"
             className={`${
               activeId === "about"
-                ? "text-gray-100 dark:text-white"
-                : "text-gray-50 dark:text-white/70"
-            } hover:text-gray-800 dark:hover:text-white transition-colors`}
+                ? "text-gray-50 dark:text-white"
+                : "text-gray-50 dark:text-white"
+            } hover:text-gray-900 dark:hover:text-white transition-colors`}
           >
             About
           </a>
@@ -91,9 +76,9 @@ const Navbar = () => {
             href="#projects"
             className={`${
               activeId === "projects"
-                ? "text-gray-100 dark:text-white"
-                : "text-gray-50 dark:text-white/70"
-            } hover:text-gray-800 dark:hover:text-white transition-colors`}
+                ? "text-gray-50 dark:text-white"
+                : "text-gray-50 dark:text-white"
+            } hover:text-gray-900 dark:hover:text-white transition-colors`}
           >
             Projects
           </a>
@@ -101,9 +86,9 @@ const Navbar = () => {
             href="#work"
             className={`${
               activeId === "work"
-                ? "text-gray-100 dark:text-white"
-                : "text-gray-50 dark:text-white/70"
-            } hover:text-gray-800 dark:hover:text-white transition-colors`}
+                ? "text-gray-50 dark:text-white"
+                : "text-gray-50 dark:text-white"
+            } hover:text-gray-900 dark:hover:text-white transition-colors`}
           >
             Work
           </a>
@@ -114,46 +99,8 @@ const Navbar = () => {
           {/* Theme toggle desktop */}
           {mounted && (
             <button
-              onClick={() => {
-                const newTheme = theme === "dark" ? "light" : "dark";
-                console.log(`🔄 Switching theme from ${theme} to ${newTheme}`);
-                setTheme(newTheme);
-
-                // Manual fallback - force add/remove dark class
-                setTimeout(() => {
-                  const html = document.documentElement;
-                  if (newTheme === "dark") {
-                    html.classList.add("dark");
-                    console.log("🔧 Manually added dark class");
-
-                    // Force background change on main container
-                    const mainContainer =
-                      document.querySelector(".min-h-screen");
-                    if (mainContainer) {
-                      (mainContainer as HTMLElement).style.backgroundColor =
-                        "#0d1117"; // GitHub dark background
-                      console.log(
-                        "🎨 Forced main container background to GitHub dark"
-                      );
-                    }
-                  } else {
-                    html.classList.remove("dark");
-                    console.log("🔧 Manually removed dark class");
-
-                    // Reset background to light
-                    const mainContainer =
-                      document.querySelector(".min-h-screen");
-                    if (mainContainer) {
-                      (mainContainer as HTMLElement).style.backgroundColor =
-                        "#f8f9fa"; // Soft light background
-                      console.log(
-                        "🎨 Reset main container background to soft light"
-                      );
-                    }
-                  }
-                }, 100);
-              }}
-              className="hidden md:inline text-gray-50 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="hidden md:inline text-gray-50 dark:text-white hover:text-gray-900 dark:hover:text-white transition-colors"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? (
@@ -222,8 +169,8 @@ const Navbar = () => {
               onClick={() => setMenuOpen(false)}
               className={`${
                 activeId === "home"
-                  ? "text-gray-100 dark:text-white"
-                  : "text-gray-50 dark:text-white/80"
+                  ? "text-gray-900 dark:text-white"
+                  : "text-gray-700 dark:text-white"
               } block`}
             >
               Home
@@ -233,8 +180,8 @@ const Navbar = () => {
               onClick={() => setMenuOpen(false)}
               className={`${
                 activeId === "about"
-                  ? "text-gray-100 dark:text-white"
-                  : "text-gray-50 dark:text-white/80"
+                  ? "text-gray-900 dark:text-white"
+                  : "text-gray-700 dark:text-white"
               } block`}
             >
               About
@@ -244,8 +191,8 @@ const Navbar = () => {
               onClick={() => setMenuOpen(false)}
               className={`${
                 activeId === "projects"
-                  ? "text-gray-100 dark:text-white"
-                  : "text-gray-50 dark:text-white/80"
+                  ? "text-gray-900 dark:text-white"
+                  : "text-gray-700 dark:text-white"
               } block`}
             >
               Projects
@@ -255,8 +202,8 @@ const Navbar = () => {
               onClick={() => setMenuOpen(false)}
               className={`${
                 activeId === "work"
-                  ? "text-gray-100 dark:text-white"
-                  : "text-gray-50 dark:text-white/80"
+                  ? "text-gray-900 dark:text-white"
+                  : "text-gray-700 dark:text-white"
               } block`}
             >
               Work
@@ -266,7 +213,7 @@ const Navbar = () => {
             {mounted && (
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="flex items-center space-x-2 text-gray-50 dark:text-white/80"
+                className="flex items-center space-x-2 text-gray-700 dark:text-white"
               >
                 {theme === "dark" ? (
                   // ☀️ Sun icon
