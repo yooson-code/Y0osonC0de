@@ -11,15 +11,15 @@ export default async function Home() {
       {/* Hero Section */}
       <section
         id="home"
-        className="bg-gray-100 dark:bg-[#24292f] text-gray-900 dark:text-white"
+        className=" bg-gray-100 dark:bg-[#24292f] text-gray-900 dark:text-white"
       >
         <div className="mx-auto max-w-5xl px-4">
-          <div className="min-h-[70vh] grid md:grid-cols-2 items-center gap-8">
+          <div className="min-h-[100vh] grid md:grid-cols-2 items-center gap-8">
             {/* Profile Image */}
             <div className="flex justify-center md:justify-start">
-              <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-gray-300 dark:border-gray-700">
+              <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-white dark:border-white bg-white">
                 <Image
-                  src="/vercel.svg" // ganti dengan fotomu, ex: /avatar.jpg
+                  src="/Desain tanpa judul.png" // ganti dengan fotomu, ex: /avatar.jpg
                   alt="Profile"
                   width={256}
                   height={256}
