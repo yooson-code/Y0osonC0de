@@ -6,6 +6,36 @@ body {
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
+/* === BOUNCE/RUBBER EFFECT ANIMATION === */
+@keyframes rubberBounce {
+  0% {
+    transform: scaleX(1) scaleY(1);
+  }
+  15% {
+    transform: scaleX(0.9) scaleY(1.1);
+  }
+  30% {
+    transform: scaleX(1.1) scaleY(0.95);
+  }
+  45% {
+    transform: scaleX(0.95) scaleY(1.05);
+  }
+  60% {
+    transform: scaleX(1.05) scaleY(0.98);
+  }
+  75% {
+    transform: scaleX(0.98) scaleY(1.02);
+  }
+  100% {
+    transform: scaleX(1) scaleY(1);
+  }
+}
+
+.navbar-underline {
+  animation: rubberBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: center;
+}
+
 /* === DARK MODE (GitHub Dark) === */
 html.dark {
   color-scheme: dark;
@@ -137,6 +167,9 @@ html:not(.dark) .border-blue-500 {
 }
 html:not(.dark) .border-green-500 {
   border-color: #1a7f37 !important;
+}
+html:not(.dark) .border-orange-500 {
+  border-color: #fb8500 !important;
 }
 html:not(.dark) .border-purple-500 {
   border-color: #8250df !important;

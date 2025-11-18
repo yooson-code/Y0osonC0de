@@ -134,30 +134,27 @@ export default async function Home() {
 
               <div className="flex flex-col md:flex-row md:items-center gap-2 mb-2">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                  Account Officer
+                  Computer Technician
                 </h3>
                 <span className="text-sm text-blue-500 dark:text-blue-400 md:ml-2">
-                  @ BMT Rukun Abadi
+                  @ Self Employee
                 </span>
                 <span className="text-sm text-gray-500 dark:text-gray-400 md:ml-auto">
-                  Sept 2022 - Present
+                  Sept 2023 - Present
                 </span>
               </div>
               <ul className="list-disc list-inside space-y-1 text-gray-600 dark:text-gray-300 text-sm">
                 <li>
-                  Implemented comprehensive security measures resulting in a 40%
-                  reduction in security incidents
+                  Perform computer repairs and troubleshooting, including
+                  operating system installation, software fixes, hardware
+                  upgrades, PC assembly, and resolving common laptop and desktop
+                  issues.
                 </li>
                 <li>
-                  Conducted regular security assessments and penetration testing
-                  on company infrastructure
-                </li>
-                <li>
-                  Developed and maintained security documentation and procedures
-                </li>
-                <li>
-                  Led security awareness training programs for over 200
-                  employees
+                  Provide regular maintenance services, performance
+                  optimization, data backup & recovery, and technical
+                  consultation to ensure clients’ devices operate reliably and
+                  securely.
                 </li>
               </ul>
             </div>
@@ -169,34 +166,60 @@ export default async function Home() {
 
               <div className="flex flex-col md:flex-row md:items-center gap-2 mb-2">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                  Computer Technician
+                  IT Support
                 </h3>
                 <span className="text-sm text-green-500 dark:text-green-400 md:ml-2">
-                  @ Self Employee
+                  @ Freelance
                 </span>
                 <span className="text-sm text-gray-500 dark:text-gray-400 md:ml-auto">
-                  Freelance
+                  Jun 2023 - Jan 2024
                 </span>
               </div>
               <ul className="list-disc list-inside space-y-1 text-gray-600 dark:text-gray-300 text-sm">
                 <li>
-                  Monitored and analyzed security alerts from various security
-                  tools
+                  Monitor and maintain network infrastructure, including
+                  troubleshooting connectivity issues, configuring
+                  routers/switches, and performing network performance checks to
+                  ensure stable operations.
                 </li>
                 <li>
-                  Participated in incident response and vulnerability management
-                </li>
-                <li>
-                  Assisted in implementing security controls and best practices
-                </li>
-                <li>
-                  Created detailed reports on security findings and
-                  recommendations
+                  Handle on-site technical installations such as CCTV system
+                  setup, network cabling, access point configuration, and other
+                  IT equipment deployments to support daily operational needs.
                 </li>
               </ul>
             </div>
 
             {/* Experience 3 */}
+            <div className="relative pl-8">
+              {/* Timeline dot */}
+              <div className="absolute left-[-8px] top-2 w-4 h-4 rounded-full border-2 border-orange-500 bg-white dark:bg-gray-800"></div>
+              <div className="flex flex-col md:flex-row md:items-center gap-2 mb-2">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  Account Officer
+                </h3>
+                <span className="text-sm text-orange-500 dark:text-orange-400 md:ml-2">
+                  @ BMT Rukun Abadi
+                </span>
+                <span className="text-sm text-gray-500 dark:text-gray-400 md:ml-auto">
+                  Sept 2022 - Present
+                </span>
+              </div>
+              <ul className="list-disc list-inside space-y-1 text-gray-600 dark:text-gray-300 text-sm">
+                <li>
+                  Manage administrative tasks, reporting, and periodic
+                  evaluation of credit/financing to ensure accuracy and
+                  compliance with internal policies.
+                </li>
+                <li>
+                  Promote financial products and services while maintaining
+                  strong relationships with clients to support business growth
+                  and customer satisfaction.
+                </li>
+              </ul>
+            </div>
+
+            {/* Experience 4 */}
             <div className="relative pl-8">
               {/* Timeline dot */}
               <div className="absolute left-[-8px] top-2 w-4 h-4 rounded-full border-2 border-purple-500 bg-white dark:bg-gray-800"></div>
@@ -214,11 +237,13 @@ export default async function Home() {
               </div>
               <ul className="list-disc list-inside space-y-1 text-gray-600 dark:text-gray-300 text-sm">
                 <li>
-                  Assisted in security assessments and vulnerability scanning
+                  Receive, inspect, and store incoming goods in accordance with
+                  operational standards to ensure accuracy and proper handling.
                 </li>
-                <li>Learned and applied cybersecurity best practices</li>
-                <li>Contributed to documentation of security procedures</li>
-                <li>Participated in security awareness training development</li>
+                <li>
+                  Organize and arrange items in the warehouse to maintain order,
+                  improve accessibility, and ensure proper categorization.
+                </li>
               </ul>
             </div>
           </div>

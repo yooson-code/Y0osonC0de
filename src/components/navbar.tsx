@@ -1,12 +1,14 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeId, setActiveId] = useState<string>("home");
+  const [underlineStyle, setUnderlineStyle] = useState({ width: 0, left: 0 });
+  const navLinksRef = useRef<{ [key: string]: HTMLElement }>({});
 
   const { theme, setTheme, resolvedTheme, systemTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -14,6 +16,17 @@ const Navbar = () => {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Update underline position when activeId changes
+  useEffect(() => {
+    if (navLinksRef.current[activeId]) {
+      const element = navLinksRef.current[activeId];
+      setUnderlineStyle({
+        width: element.offsetWidth,
+        left: element.offsetLeft,
+      });
+    }
+  }, [activeId]);
 
   useEffect(() => {
     const ids = ["home", "about", "projects", "work"];
@@ -51,44 +64,64 @@ const Navbar = () => {
         </div>
 
         {/* desktop links */}
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="hidden md:flex items-center space-x-6 relative">
+          {/* Animated underline */}
+          <div
+            className="absolute bottom-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 dark:from-blue-400 dark:to-purple-400 transition-all duration-500 ease-out shadow-lg shadow-blue-500/50 dark:shadow-blue-400/50 navbar-underline"
+            style={{
+              width: `${underlineStyle.width}px`,
+              left: `${underlineStyle.left}px`,
+            }}
+          />
           <a
+            ref={(el) => {
+              if (el) navLinksRef.current["home"] = el;
+            }}
             href="#home"
             className={`${
               activeId === "home"
                 ? "text-gray-50 dark:text-white"
                 : "text-gray-50 dark:text-white"
-            } hover:text-gray-900 dark:hover:text-white transition-colors`}
+            } hover:text-gray-900 dark:hover:text-white transition-colors relative`}
           >
             Home
           </a>
           <a
+            ref={(el) => {
+              if (el) navLinksRef.current["about"] = el;
+            }}
             href="#about"
             className={`${
               activeId === "about"
                 ? "text-gray-50 dark:text-white"
                 : "text-gray-50 dark:text-white"
-            } hover:text-gray-900 dark:hover:text-white transition-colors`}
+            } hover:text-gray-900 dark:hover:text-white transition-colors relative`}
           >
             About
           </a>
           <a
+            ref={(el) => {
+              if (el) navLinksRef.current["projects"] = el;
+            }}
             href="#projects"
             className={`${
               activeId === "projects"
                 ? "text-gray-50 dark:text-white"
                 : "text-gray-50 dark:text-white"
-            } hover:text-gray-900 dark:hover:text-white transition-colors`}
+            } hover:text-gray-900 dark:hover:text-white transition-colors relative`}
           >
             Projects
           </a>
           <a
+            ref={(el) => {
+              if (el) navLinksRef.current["work"] = el;
+            }}
             href="#work"
             className={`${
               activeId === "work"
                 ? "text-gray-50 dark:text-white"
                 : "text-gray-50 dark:text-white"
-            } hover:text-gray-900 dark:hover:text-white transition-colors`}
+            } hover:text-gray-900 dark:hover:text-white transition-colors relative`}
           >
             Work
           </a>
@@ -169,8 +202,8 @@ const Navbar = () => {
               onClick={() => setMenuOpen(false)}
               className={`${
                 activeId === "home"
-                  ? "text-gray-900 dark:text-white"
-                  : "text-gray-700 dark:text-white"
+                  ? "text-gray-50 dark:text-white"
+                  : "text-gray-50 dark:text-white"
               } block`}
             >
               Home
@@ -180,8 +213,8 @@ const Navbar = () => {
               onClick={() => setMenuOpen(false)}
               className={`${
                 activeId === "about"
-                  ? "text-gray-900 dark:text-white"
-                  : "text-gray-700 dark:text-white"
+                  ? "text-gray-50 dark:text-white"
+                  : "text-gray-50 dark:text-white"
               } block`}
             >
               About
@@ -191,8 +224,8 @@ const Navbar = () => {
               onClick={() => setMenuOpen(false)}
               className={`${
                 activeId === "projects"
-                  ? "text-gray-900 dark:text-white"
-                  : "text-gray-700 dark:text-white"
+                  ? "text-gray-50 dark:text-white"
+                  : "text-gray-50 dark:text-white"
               } block`}
             >
               Projects
@@ -202,8 +235,8 @@ const Navbar = () => {
               onClick={() => setMenuOpen(false)}
               className={`${
                 activeId === "work"
-                  ? "text-gray-900 dark:text-white"
-                  : "text-gray-700 dark:text-white"
+                  ? "text-gray-50 dark:text-white"
+                  : "text-gray-50 dark:text-white"
               } block`}
             >
               Work
